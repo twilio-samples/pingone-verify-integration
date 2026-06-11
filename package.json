@@ -1,0 +1,16 @@
+{
+  "name": "pingone-twilio-verify",
+  "version": "1.0.0",
+  "description": "Twilio Serverless Function — PingOne custom MFA server using Twilio Verify",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "twilio serverless:start",
+    "deploy": "twilio serverless:deploy"
+  },
+  "dependencies": {
+    "@twilio/runtime-handler": "2.0.1",
+    "twilio": "^5.0.0"
+  }
+}
