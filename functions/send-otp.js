@@ -28,7 +28,7 @@ exports.handler = async function (context, event, callback) {
   }
 
   // --- Input validation ---
-  // PingOne sends ${to} (E.164, FULL format), ${otp}, and a channel hint we set in the body template.
+  // PingOne sends ${to} (E.164, FULL format), ${otp}, and a channel hint we set in the body template ("sms" or "call").
   const to      = (event.to      || '').trim();
   const otp     = (event.otp     || '').trim();
   const channel = (event.channel || 'sms').trim().toLowerCase();
@@ -48,7 +48,7 @@ exports.handler = async function (context, event, callback) {
   }
 
   // Map PingOne channel hint to Twilio Verify channel value
-  const verifyChannel = channel === 'voice' ? 'call' : 'sms';
+  const verifyChannel = channel === 'call' ? 'call' : 'sms';
 
   // --- Send via Twilio Verify with customCode ---
   // Requires "Custom Verification Code" enabled on the Verify Service in the Console:
